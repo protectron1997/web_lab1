@@ -15,7 +15,8 @@ import com.fastcgi.FCGIInterface;
 public class Main {
     public static void main(String[] args) {
 
-        int x = 0,y = 0,r = 0;
+        int y = 0;
+        double x=0, r=0;
         var fcgiInterface = new FCGIInterface();
 
 
@@ -23,17 +24,18 @@ public class Main {
 
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             var content = "";
+
             if(data != null){
                 for(String chunk : data.split("&")){
                     String[] keyValue = chunk.split("=");
                     if(Objects.equals(keyValue[0], "x")){
-                        x = Integer.parseInt(keyValue[1]);
+                        x = Double.parseDouble(keyValue[1]);
                     }
                     if(Objects.equals(keyValue[0], "y")){
                         y = Integer.parseInt(keyValue[1]);
                     }
                     if(Objects.equals(keyValue[0], "r")){
-                        r = Integer.parseInt(keyValue[1]);
+                        r = Double.parseDouble(keyValue[1]);
                     }
                 }
                 var start = Instant.now();
@@ -51,16 +53,8 @@ public class Main {
 
 
 
+            SendString.send(content);
 
-            var httpResponse = """
-                    HTTP/1.1 200 OK
-                    Content-Type: text/html
-                    Content-Length: %d
-                    
-                    %s
-                    """.formatted(content.getBytes(StandardCharsets.UTF_8).length, content);
-
-            System.out.println(httpResponse);
         }
     }
 }
