@@ -1,4 +1,4 @@
-import Exceptions.ParseExeption;
+import Exceptions.ParseException;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -12,7 +12,7 @@ public class Parser{
 
 
 
-    public HashMap<String, String> parse (String data) throws ParseExeption {
+    public HashMap<String, String> parse (String data) throws ParseException {
         double x,r;
         int y;
         boolean badFlag = false;
@@ -52,7 +52,7 @@ public class Parser{
                 }
             }
             if (badFlag){
-                throw new ParseExeption(badMessage.toString());
+                throw new ParseException(badMessage.toString());
             }
             else{
                 extValues.put("x", String.valueOf(this.x));
