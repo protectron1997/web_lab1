@@ -1,5 +1,6 @@
 package controller;
 
+import Exceptions.ParseException;
 import com.fastcgi.FCGIInterface;
 import model.Model;
 import share.Coordinates;
@@ -19,17 +20,23 @@ public class Controller {
 
         while (fcgiInterface.FCGIaccept() >= 0) {
             Coordinates coordinates = null;
+            String content = "";
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
 
             try{
                 coordinates = mainParser.extractValues(data);
-                String content = mainModel.generate(coordinates);
-                View.send(content);
             }
             catch (Exception e){
-                View.send("HELLO");
+                View.send(e.getMessage());
             }
+
+            content = mainModel.generate(coordinates);
+            View.send(content);
+
+
+
+
 
             /*String content = mainModel.generate(data);
             view.View.send(content);*/
