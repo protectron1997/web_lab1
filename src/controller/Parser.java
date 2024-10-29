@@ -29,7 +29,7 @@ public class Parser{
                     this.x = x;
                 } else {
                     badParseFlag = true;
-                    badParseInfo.append("false x");
+                    badParseInfo.append("false x ");
                 }
             }
 
@@ -39,7 +39,7 @@ public class Parser{
                     this.y = y;
                 } else {
                     badParseFlag = true;
-                    badParseInfo.append("false y");
+                    badParseInfo.append("false y ");
                 }
             }
 
@@ -49,7 +49,7 @@ public class Parser{
                     this.r = r;
                 } else {
                     badParseFlag = true;
-                    badParseInfo.append("false r");
+                    badParseInfo.append("false r ");
                 }
             }
 
