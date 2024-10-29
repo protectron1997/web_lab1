@@ -9,6 +9,7 @@ public class Controller {
 
     void run(){
         Model mainModel = new Model();
+        Parser mainParser = new Parser();
 
         while (fcgiInterface.FCGIaccept() >= 0) {
 

@@ -2,6 +2,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Model {
@@ -16,6 +17,20 @@ public class Model {
             }
             """;
 
+
+
+    public String generate(HashMap<String,String> extValues){
+        String content = "";
+        var start = Instant.now();
+        content = String.valueOf(AreaCheck.hit(Double.parseDouble(extValues.get("x")),Integer.parseInt(extValues.get("y")),Double.parseDouble(extValues.get("r"))));
+        var end = Instant.now();
+
+        long time = ChronoUnit.NANOS.between(start,end);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
+        content = JSON.formatted(String.valueOf(AreaCheck.hit(this.x,this.y,this.r)),time,LocalDateTime.now().format(dtf));
+
+        return content;
+    }
 
 
     public String generate(String data){
