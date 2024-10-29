@@ -14,7 +14,7 @@ public class Controller {
 
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             String content = generator.generate(data);
-            SendString.send(content);
+            View.send(content);
 
         }
     }
