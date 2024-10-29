@@ -8,7 +8,7 @@ public class Controller {
     }
 
     void run(){
-        var generator = new ContentGen();
+        ContentGen generator = new ContentGen();
 
         while (fcgiInterface.FCGIaccept() >= 0) {
 

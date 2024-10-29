@@ -8,7 +8,10 @@ public class Main {
 
 
         var fcgiInterface = new FCGIInterface();
-        var generator = new ContentGen();
+        Controller mainController = new Controller(fcgiInterface);
+        mainController.run();
+
+      /*  var generator = new ContentGen();
 
         while (fcgiInterface.FCGIaccept() >= 0) {
 
@@ -16,6 +19,6 @@ public class Main {
             String content = generator.generate(data);
             SendString.send(content);
 
-        }
+        }*/
     }
 }
