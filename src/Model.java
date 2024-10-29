@@ -19,16 +19,32 @@ public class Model {
 
 
 
-    public String generate(HashMap<String,String> extValues){
-        String content = "";
-        var start = Instant.now();
-        content = String.valueOf(AreaCheck.hit(Double.parseDouble(extValues.get("x")),Integer.parseInt(extValues.get("y")),Double.parseDouble(extValues.get("r"))));
-        var end = Instant.now();
+    public String generate(Coordinates coordinates){
+        this.x = coordinates.getX();
+        this.y = coordinates.getY();
+        this.r = coordinates.getR();
+        var content = "";
 
-        long time = ChronoUnit.NANOS.between(start,end);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
-        content = JSON.formatted(String.valueOf(AreaCheck.hit(this.x,this.y,this.r)),time,LocalDateTime.now().format(dtf));
+        if(true){
+            try {
+                /*extractValues(data);*/
+                var start = Instant.now();
+                content = String.valueOf(AreaCheck.hit(this.x,this.y,this.r));
+                var end = Instant.now();
 
+                long time = ChronoUnit.NANOS.between(start,end);
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
+                content = JSON.formatted(String.valueOf(AreaCheck.hit(this.x,this.y,this.r)),time,LocalDateTime.now().format(dtf));
+            }
+            catch (Exception e){
+                String error = e.getMessage();
+                error = error.replace("\"", " ");
+                //content = JSON.formatted("error",'0','0');
+                content = JSON.formatted("error",error,'0');
+            }
+
+
+        }
         return content;
     }
 
