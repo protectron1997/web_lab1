@@ -26,13 +26,15 @@ public class Controller {
 
             try{
                 coordinates = mainParser.extractValues(data);
+                content = mainModel.generate(coordinates);
+                View.send(content);
             }
-            catch (Exception e){
+            catch (ParseException e){
                 View.send(e.getMessage());
             }
 
-            content = mainModel.generate(coordinates);
-            View.send(content);
+
+
 
 
 
