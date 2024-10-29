@@ -1,16 +1,18 @@
-import Exceptions.ParseException;
-import com.fastcgi.FCGIInterface;
+package controller;
 
-import java.util.HashMap;
+import com.fastcgi.FCGIInterface;
+import model.Model;
+import share.Coordinates;
+import view.View;
 
 public class Controller {
     private final FCGIInterface fcgiInterface;
 
-    Controller(FCGIInterface fcgiInterface){
+    public Controller(FCGIInterface fcgiInterface){
         this.fcgiInterface = fcgiInterface;
     }
 
-    void run(){
+    public void run(){
         Model mainModel = new Model();
         Parser mainParser = new Parser();
 
@@ -18,15 +20,7 @@ public class Controller {
         while (fcgiInterface.FCGIaccept() >= 0) {
             Coordinates coordinates = null;
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
-
-            /*try {
-                exValues = mainParser.parse(data);
-                String content = mainModel.generate(exValues);
-                View.send(content);
-            }
-            catch (ParseException e){
-                //System.out.println(e.getMessage());
-            }*/
+            
 
             try{
                 coordinates = mainParser.extractValues(data);
@@ -38,7 +32,7 @@ public class Controller {
             }
 
             /*String content = mainModel.generate(data);
-            View.send(content);*/
+            view.View.send(content);*/
 
         }
     }

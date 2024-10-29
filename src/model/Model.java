@@ -1,8 +1,11 @@
+package model;
+
+import share.Coordinates;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class Model {

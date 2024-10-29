@@ -1,3 +1,5 @@
+package model;
+
 public class AreaCheck {
     public static boolean hit(double x, int y, double r){
         return kvadrat(x,y,r) || krug(x,y,r) || triangle(x,y,r);

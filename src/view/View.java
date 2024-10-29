@@ -1,3 +1,5 @@
+package view;
+
 import java.nio.charset.StandardCharsets;
 
 public class View {

@@ -1,3 +1,5 @@
+package share;
+
 public class Coordinates {
     private double x,r;
     private int y;
