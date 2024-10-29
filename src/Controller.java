@@ -8,12 +8,15 @@ public class Controller {
     }
 
     void run(){
-        ContentGen generator = new ContentGen();
+        Model mainModel = new Model();
 
         while (fcgiInterface.FCGIaccept() >= 0) {
 
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
-            String content = generator.generate(data);
+
+
+
+            String content = mainModel.generate(data);
             View.send(content);
 
         }

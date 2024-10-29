@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class ContentGen {
+public class Model {
     private double x,r;
     private int y;
 
