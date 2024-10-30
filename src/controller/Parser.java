@@ -45,6 +45,7 @@ public class Parser{
             }
 
             if (Objects.equals(keyValue[0], "r")) {
+
                 r = Double.parseDouble(keyValue[1]);
                 if (r >= 2 && r <= 5) {
                     this.r = r;
