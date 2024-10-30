@@ -4,6 +4,7 @@ import Exceptions.ParseException;
 import com.fastcgi.FCGIInterface;
 import model.Model;
 import share.Coordinates;
+import share.JSON;
 import view.View;
 
 public class Controller {
@@ -24,14 +25,14 @@ public class Controller {
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
 
-            /*try{
+            try{
                 coordinates = mainParser.extractValues(data);
                 content = mainModel.generate(coordinates);
                 View.send(content);
             }
             catch (ParseException e){
-                View.send(e.getMessage());
-            }*/
+                View.send(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
+            }
 
 
 
@@ -40,8 +41,8 @@ public class Controller {
 
 
 
-            content = mainModel.generate(data);
-            view.View.send(content);
+            /*content = mainModel.generate(data);
+            view.View.send(content);*/
 
         }
     }

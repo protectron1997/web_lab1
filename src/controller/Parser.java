@@ -24,6 +24,7 @@ public class Parser{
             String[] keyValue = chunk.split("=");
 
             if (Objects.equals(keyValue[0], "x")) {
+
                 x = Double.parseDouble(keyValue[1]);
                 if (x >= -5 && x <= 3) {
                     this.x = x;
