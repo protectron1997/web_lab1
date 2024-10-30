@@ -24,14 +24,14 @@ public class Controller {
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
 
-            try{
+            /*try{
                 coordinates = mainParser.extractValues(data);
                 content = mainModel.generate(coordinates);
                 View.send(content);
             }
             catch (ParseException e){
                 View.send(e.getMessage());
-            }
+            }*/
 
 
 
@@ -40,8 +40,8 @@ public class Controller {
 
 
 
-            /*String content = mainModel.generate(data);
-            view.View.send(content);*/
+            content = mainModel.generate(data);
+            view.View.send(content);
 
         }
     }
