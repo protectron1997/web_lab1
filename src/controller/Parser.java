@@ -24,8 +24,12 @@ public class Parser{
             String[] keyValue = chunk.split("=");
 
             if (Objects.equals(keyValue[0], "x")) {
-
-                x = Double.parseDouble(keyValue[1]);
+                try {
+                    x = Double.parseDouble(keyValue[1]);
+                }
+                catch (NumberFormatException e){
+                    badParseInfo.append("x isn't double ");
+                }
                 if (x >= -5 && x <= 3) {
                     this.x = x;
                 } else {
@@ -35,7 +39,13 @@ public class Parser{
             }
 
             if (Objects.equals(keyValue[0], "y")) {
-                y = Integer.parseInt(keyValue[1]);
+                try {
+                    y = Integer.parseInt(keyValue[1]);
+                }
+                catch (NumberFormatException e){
+                    badParseInfo.append("y isn't int ");
+                }
+
                 if (y >= -4 && y <= 4) {
                     this.y = y;
                 } else {
@@ -45,8 +55,12 @@ public class Parser{
             }
 
             if (Objects.equals(keyValue[0], "r")) {
-
-                r = Double.parseDouble(keyValue[1]);
+                try {
+                    r = Double.parseDouble(keyValue[1]);
+                }
+                catch (NumberFormatException e){
+                    badParseInfo.append("r isn't double ");
+                }
                 if (r >= 2 && r <= 5) {
                     this.r = r;
                 } else {
