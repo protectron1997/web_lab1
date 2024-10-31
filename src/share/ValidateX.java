@@ -9,7 +9,7 @@ public class ValidateX implements IValidator<Double>{
         if (x >= -5 && x <= 3) {
             result = true;
         } else {
-            throw new ValidateException("Wrong x value ");
+            throw new ValidateException("wrong x value ");
         }
         return result;
     }

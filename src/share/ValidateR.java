@@ -9,7 +9,7 @@ public class ValidateR implements IValidator<Double>{
         if (r >= 2 && r <= 5) {
             result = true;
         } else {
-            throw new ValidateException("Wrong r value ");
+            throw new ValidateException("wrong r value ");
         }
         return result;
     }

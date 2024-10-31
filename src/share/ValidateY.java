@@ -9,7 +9,7 @@ public class ValidateY implements IValidator<Integer>{
         if (y >= -4 && y <= 4) {
             result = true;
         } else {
-            throw new ValidateException("Wrong y value ");
+            throw new ValidateException("wrong y value ");
         }
         return result;
     }
