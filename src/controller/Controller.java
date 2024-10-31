@@ -25,13 +25,16 @@ public class Controller {
             String content = "";
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
-
+            //777 если новых функций не будет - объедини catch
             try{
                 coordinates = newMainParser.parse(data);
                 content = mainModel.generate(coordinates);
                 View.send(content);
             }
             catch (ParseException e){
+                View.send(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
+            }
+            catch (Exception e){
                 View.send(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
             }
 
