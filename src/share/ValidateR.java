@@ -2,17 +2,15 @@ package share;
 
 import Exceptions.ValidateException;
 
-public class ValidateX implements IValidator<Double>{
+public class ValidateR implements IValidator<Double>{
     @Override
-    public boolean check(Double x) {
+    public boolean check(Double r) {
         boolean result = false;
-        if (x >= -5 && x <= 3) {
+        if (r >= 2 && r <= 5) {
             result = true;
         } else {
-            throw new ValidateException("Wrong x value ");
+            throw new ValidateException("Wrong r value ");
         }
         return result;
     }
-
-
 }

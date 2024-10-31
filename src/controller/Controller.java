@@ -17,6 +17,7 @@ public class Controller {
     public void run(){
         Model mainModel = new Model();
         Parser mainParser = new Parser();
+        NewParser newMainParser = new NewParser();
 
 
         while (fcgiInterface.FCGIaccept() >= 0) {
@@ -26,7 +27,7 @@ public class Controller {
             
 
             try{
-                coordinates = mainParser.extractValues(data);
+                coordinates = newMainParser.parse(data);
                 content = mainModel.generate(coordinates);
                 View.send(content);
             }
