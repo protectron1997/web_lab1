@@ -78,8 +78,12 @@ public class NewParser {
 
         }
 
-        if((counter != 3) || !(badParseInfo.toString().equals(""))){
+        if(!(badParseInfo.toString().equals(""))){
             throw new ParseException(badParseInfo.toString());
+        }
+
+        if((counter != 3) || (Double.isNaN(result.getX()) || (Double.isNaN(result.getR()) || (result.getY() == null) ))){
+            throw new ParseException("wrong number of arguments(xyr) or check that(xyr) exists ");
         }
 
         return result;

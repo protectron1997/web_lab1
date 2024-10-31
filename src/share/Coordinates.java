@@ -1,8 +1,9 @@
 package share;
 
 public class Coordinates {
-    private double x,r;
-    private int y;
+    private double x=Double.NaN;
+    private double r=Double.NaN;
+    private Integer y=null;
 
     public double getX() {
         return x;
@@ -20,7 +21,7 @@ public class Coordinates {
         this.r = r;
     }
 
-    public int getY() {
+    public Integer getY() {
         return y;
     }
 
