@@ -32,10 +32,10 @@ public class Controller {
                 View.send(content);
             }
             catch (ParseException e){
-                View.send(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
+                View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
             }
             catch (Exception e){
-                View.send(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
+                View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
             }
 
 
