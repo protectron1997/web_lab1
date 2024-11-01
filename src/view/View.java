@@ -15,4 +15,18 @@ public class View {
 
         System.out.println(httpResponse);
     }
+
+    public static void errorSend(String content){
+        var httpResponse = """
+                    HTTP/1.1 400 Bad Request
+                    Content-Type: application/json
+                    Content-Length: %d
+                    
+                    %s
+                    """.formatted(content.getBytes(StandardCharsets.UTF_8).length, content);
+
+        System.out.println(httpResponse);
+
+
+    }
 }
