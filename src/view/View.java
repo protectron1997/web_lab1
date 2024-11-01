@@ -3,6 +3,8 @@ package view;
 import java.nio.charset.StandardCharsets;
 
 public class View {
+
+
     public static void send(String content){
 
         var httpResponse = """
@@ -16,9 +18,11 @@ public class View {
         System.out.println(httpResponse);
     }
 
+
+
     public static void errorSend(String content){
         var httpResponse = """
-                    HTTP/1.1 400 Bad Request
+                    Status: 400 Bad Request
                     Content-Type: application/json
                     Content-Length: %d
                     
