@@ -20,15 +20,15 @@ public class Controller {
 
 
         while (fcgiInterface.FCGIaccept() >= 0) {
-            Coordinates coordinates;
-            String content;
-            String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
+            Coordinates coordinatesOfDot;
+            String contentToSend;
+            String dataFromUser = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
 
             try{
-                coordinates = MainParser.parse(data);
-                content = mainModel.generate(coordinates);
-                View.send(content);
+                coordinatesOfDot = MainParser.parse(dataFromUser);
+                contentToSend = mainModel.generate(coordinatesOfDot);
+                View.send(contentToSend);
             }
             catch (ParseException e){
                 View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
