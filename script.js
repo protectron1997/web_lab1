@@ -109,12 +109,10 @@ sendButton.onclick = function () {
 
             }
             else {
-                console.log("ERROR!")
-                sendStatusBlock.innerText = 'что-то пошло не по плану';
+                throw new Error;
             }
         }
-        catch (err) {
-            err;
+        catch {
             console.log("ERROR!")
             sendStatusBlock.innerText = 'что-то пошло не по плану';
         }
