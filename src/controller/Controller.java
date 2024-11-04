@@ -20,8 +20,8 @@ public class Controller {
 
 
         while (fcgiInterface.FCGIaccept() >= 0) {
-            Coordinates coordinates = null;
-            String content = "";
+            Coordinates coordinates;
+            String content;
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
             //777 если новых функций не будет - объедини catch

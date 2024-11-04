@@ -78,7 +78,7 @@ public class Parser {
 
         }
 
-        if(!(badParseInfo.toString().equals(""))){
+        if(!(badParseInfo.toString().isEmpty())){
             throw new ParseException(badParseInfo.toString());
         }
 
