@@ -8,8 +8,6 @@ let dotStatus = document.getElementsByClassName('dot-status');
 
 
 sendButton.onclick = function () {
-
-
     let xValue = document.getElementById("x-input").value;
     let rValue = document.getElementById("r-input").value;
     let yValue;
@@ -46,14 +44,15 @@ sendButton.onclick = function () {
                 console.log(textStatus.date);
 
 
-                if (textStatus.result == "true") {
-                    console.log("есть пробитие!");
-                    dotStatus[0].innerHTML = '<img src="./gifs/neo.gif">';
-                }
-                else {
-                    console.log("промах");
-                    dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
-                }
+                updateDotStatus(textStatus.result);
+                // if (textStatus.result == "true") {
+                //     console.log("есть пробитие!");
+                //     dotStatus[0].innerHTML = '<img src="./gifs/neo.gif">';
+                // }
+                // else {
+                //     console.log("промах");
+                //     dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
+                // }
 
                 addRowToTable(xValue, yValue, rValue, textStatus);
             }
@@ -127,4 +126,16 @@ function addRowToTable(xValue,yValue,rValue, textStatus){
 
 
                 tableStatusTable.appendChild(newRow);
+}
+
+
+function updateDotStatus(result){
+    if (result == "true") {
+        //console.log("есть пробитие!");
+        dotStatus[0].innerHTML = '<img src="./gifs/neo.gif">';
+    }
+    else {
+        //console.log("промах");
+        dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
+    }
 }
