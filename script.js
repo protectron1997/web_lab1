@@ -56,35 +56,6 @@ sendButton.onclick = function () {
                 }
 
                 addRowToTable(xValue, yValue, rValue, textStatus);
-
-                // const newRow = document.createElement('tr');
-                // const xCell = document.createElement('td');
-                // xCell.textContent = xValue;
-                // newRow.appendChild(xCell);
-
-                // const yCell = document.createElement('td');
-                // yCell.textContent = yValue;
-                // newRow.appendChild(yCell);
-
-                // const rCell = document.createElement('td');
-                // rCell.textContent = rValue;
-                // newRow.appendChild(rCell);
-
-                // const timeCell = document.createElement('td');
-                // timeCell.textContent = textStatus.time_exec;
-                // newRow.appendChild(timeCell);
-
-                // const dateCell = document.createElement('td');
-                // dateCell.textContent = textStatus.date;
-                // newRow.appendChild(dateCell);
-
-                // const resultCell = document.createElement('td');
-                // resultCell.textContent = textStatus.result;
-                // newRow.appendChild(resultCell);
-
-
-                // tableStatusTable.appendChild(newRow);
-
             }
             else {
                 throw new Error;
