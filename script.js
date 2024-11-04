@@ -20,31 +20,31 @@ sendButton.onclick = function () {
 
 
 
-    let isValid = true;
-    let errorMessage = '';
+    // let isValid = true;
+    // let errorMessage = '';
 
 
-    if (isNaN(xValue) || xValue < -5 || xValue > 3 || xValue === '') {
-        isValid = false;
-        errorMessage += 'Значение X должно быть числом в диапазоне от -5 до 3.\n';
+    // if (isNaN(xValue) || xValue < -5 || xValue > 3 || xValue === '') {
+    //     isValid = false;
+    //     errorMessage += 'Значение X должно быть числом в диапазоне от -5 до 3.\n';
 
-    }
-
-
-    if (yValue === undefined) {
-        isValid = false;
-        errorMessage += 'Выберите значение Y.\n';
-    }
+    // }
 
 
-    if (isNaN(rValue) || rValue < 2 || rValue > 5) {
-        isValid = false;
-        errorMessage += 'Значение R должно быть числом в диапазоне от 2 до 5.\n';
-    }
+    // if (yValue === undefined) {
+    //     isValid = false;
+    //     errorMessage += 'Выберите значение Y.\n';
+    // }
 
 
-    if (!isValid) {
-        sendStatusBlock.innerText = errorMessage;
+    // if (isNaN(rValue) || rValue < 2 || rValue > 5) {
+    //     isValid = false;
+    //     errorMessage += 'Значение R должно быть числом в диапазоне от 2 до 5.\n';
+    // }
+
+    const validateResult = validateInputs(xValue, yValue, rValue);
+    if (!validateResult.isValid) {
+        sendStatusBlock.innerText = validateResult.errorMessage;
         return;
     }
     else {
@@ -120,3 +120,31 @@ sendButton.onclick = function () {
 
     doRequest();
 };
+
+
+
+function validateInputs(xValue, yValue, rValue){
+    let isValid = true;
+    let errorMessage = '';
+
+
+    if (isNaN(xValue) || xValue < -5 || xValue > 3 || xValue === '') {
+        isValid = false;
+        errorMessage += 'Значение X должно быть числом в диапазоне от -5 до 3.\n';
+
+    }
+
+
+    if (yValue === undefined) {
+        isValid = false;
+        errorMessage += 'Выберите значение Y.\n';
+    }
+
+
+    if (isNaN(rValue) || rValue < 2 || rValue > 5) {
+        isValid = false;
+        errorMessage += 'Значение R должно быть числом в диапазоне от 2 до 5.\n';
+    }
+
+    return {isValid, errorMessage};
+}
