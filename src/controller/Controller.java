@@ -24,7 +24,7 @@ public class Controller {
             String content;
             String data = FCGIInterface.request.params.getProperty("QUERY_STRING");
             
-            //777 если новых функций не будет - объедини catch
+
             try{
                 coordinates = MainParser.parse(data);
                 content = mainModel.generate(coordinates);

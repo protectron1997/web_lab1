@@ -2,14 +2,14 @@ package model;
 
 public class AreaCheck {
     public static boolean hit(double x, int y, double r){
-        return kvadrat(x,y,r) || krug(x,y,r) || triangle(x,y,r);
+        return square(x,y,r) || circle(x,y,r) || triangle(x,y,r);
     }
 
-    public static boolean kvadrat(double x, int y, double r){
+    public static boolean square(double x, int y, double r){
         return ((x >= -r) && (x <= 0) && (y <= r) && (y >= 0));
     }
 
-    public static boolean krug (double x, int y, double r){
+    public static boolean circle(double x, int y, double r){
         double length = Math.sqrt(x*x + y*y);
         return ((x>=0) && (y<=0) && (length <= ((double) r /2)));
     }
