@@ -57,11 +57,13 @@ sendButton.onclick = async function () {
     //     }
     // }
     try {
-        let textStatus = await doRequest();
-
+        let textStatus = await newDoRequest(xValue, yValue, rValue);
+        updateDotStatus(textStatus.result);
+        addRowToTable(xValue, yValue, rValue, textStatus);
     }
     catch (error) {
-
+        console.error("ERROR!", error)
+        sendStatusBlock.innerText = error.message;
     }
 };
 
@@ -136,7 +138,7 @@ function updateDotStatus(result) {
     }
 }
 
-function async newDoRequest(xValue, yValue, rValue){
+async function newDoRequest(xValue, yValue, rValue){
 
     const coords = new URLSearchParams({
         x: xValue,
