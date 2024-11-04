@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>MATRIX</title>
+    <link href="./index.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <script src="jquery-3.7.1.js"></script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+        <div class="shapka">
+
+            <div class="glitch" data-text="MATRIX">MATRIX</div>
+        </div>
+
+        <div class="flex-body">
+            <div id="news">
+                <h3>Нет новостей, а мб есть? Проверка работы веток</h3>
+
+            </div>
+
+            <div class="main-content-of-lab">
+
+
+
+                <div class="input-container">
+                    <input name="x-value" id="x-input" type="text" placeholder="значение от -5 до 3" maxlength="4">
+                    <div class="y-input">
+
+                        <input name="y-value" type="radio" value="-4">-4
+                        <input name="y-value" type="radio" value="-3">-3
+                        <input name="y-value" type="radio" value="-2">-2
+                        <input name="y-value" type="radio" value="-1">-1
+                        <input name="y-value" type="radio" value="0">0
+                        <input name="y-value" type="radio" value="1">1
+                        <input name="y-value" type="radio" value="2">2
+                        <input name="y-value" type="radio" value="3">3
+                        <input name="y-value" type="radio" value="4">4
+
+                    </div>
+                    <input name="r-value" id="r-input" type="text" placeholder="значение от 2 до 5" maxlength="4">
+
+                    <p><button id="send-button">send</button></p>
+                    <div id="send-status"></div>
+                </div>
+
+                <div class="dot-status">
+                    <img src="./gifs/stand.gif">
+                </div>
+
+
+
+
+            </div>
+
+            <div class="main-content-of-lab">
+                <div >
+                    <table id="table-status-table">
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th>time_exec</th>
+                            <th>date</th>
+                            <th>res</th>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <svg id="mySvg" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="400" fill="rgba(127, 121, 72, 0.8)" />
+                        <line x1="200" y1="0" x2="200" y2="400" stroke="black" stroke-width="2" />
+                        <line x1="0" y1="200" x2="400" y2="200" stroke="black" stroke-width="2" />
+                        <path d="
+                        M 200,200 
+                        L 200,50
+                        L 50,50     
+                        L 50,200
+                        L 125,200
+                        L 200, 350
+                        L 200, 275
+                        Q 275 275 275 200
+                        L 200,200
+                        Z" fill="lightgreen" stroke="green" />
+                        <polygon points="195,5 205,5 200,0" fill="black" />
+                        <text x="208" y="8" font-family="Arial" font-size="12" fill="black">
+                            y
+                        </text>
+                        <polygon points="400,200 395,205 395,195" fill="black" />
+                        <text x="393" y="190" font-family="Arial" font-size="12" fill="black">
+                            x
+                        </text>
+
+
+                        <line x1="50" y1="195" x2="50" y2="205" stroke="black" stroke-width="2" />
+                        <text x="43" y="190" font-family="Arial" font-size="12" fill="black">
+                            -R
+                        </text>
+                        <line x1="125" y1="195" x2="125" y2="205" stroke="black" stroke-width="2" />
+                        <text x="112" y="190" font-family="Arial" font-size="12" fill="black">
+                            -R/2
+                        </text>
+                        <line x1="275" y1="195" x2="275" y2="205" stroke="black" stroke-width="2" />
+                        <text x="266" y="190" font-family="Arial" font-size="12" fill="black">
+                            R/2
+                        </text>
+                        <line x1="350" y1="195" x2="350" y2="205" stroke="black" stroke-width="2" />
+                        <text x="346" y="190" font-family="Arial" font-size="12" fill="black">
+                            R
+                        </text>
+
+                        <line x1="195" y1="50" x2="205" y2="50" stroke="black" stroke-width="2" />
+                        <text x="207" y="53" font-family="Arial" font-size="12" fill="black">
+                            R
+                        </text>
+                        <line x1="195" y1="125" x2="205" y2="125" stroke="black" stroke-width="2" />
+                        <text x="207" y="128" font-family="Arial" font-size="12" fill="black">
+                            R/2
+                        </text>
+                        <line x1="195" y1="275" x2="205" y2="275" stroke="black" stroke-width="2" />
+                        <text x="207" y="278" font-family="Arial" font-size="12" fill="black">
+                            -R
+                        </text>
+                        <line x1="195" y1="350" x2="205" y2="350" stroke="black" stroke-width="2" />
+                        <text x="207" y="353" font-family="Arial" font-size="12" fill="black">
+                            -R/2
+                        </text>
+
+
+                    </svg>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+
+        <div class="foot">
+            Здесь могла быть ваша реклама
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
+
+
+</html>
