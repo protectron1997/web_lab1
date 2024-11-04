@@ -7,7 +7,7 @@ let dotStatus = document.getElementsByClassName('dot-status');
 
 
 
-sendButton.onclick = function () {
+sendButton.onclick = async function () {
     let xValue = document.getElementById("x-input").value;
     let rValue = document.getElementById("r-input").value;
     let yValue;
@@ -26,43 +26,48 @@ sendButton.onclick = function () {
         sendStatusBlock.innerText = '';
     }
 
-    async function doRequest() {
-        try {
-            const coords = new URLSearchParams({
-                x: xValue,
-                y: yValue,
-                r: rValue,
-            });
-            const url = `/fastcgi?${coords.toString()}`;
-            let response = await fetch(url);
+    // async function doRequest() {
+    //     try {
+    //         const coords = new URLSearchParams({
+    //             x: xValue,
+    //             y: yValue,
+    //             r: rValue,
+    //         });
+    //         const url = `/fastcgi?${coords.toString()}`;
+    //         let response = await fetch(url);
 
-            if (response.ok) {
-                let textStatus = await response.json();
-                console.log(textStatus);
-                console.log(textStatus.result);
-                console.log(textStatus.time_exec);
-                console.log(textStatus.date);
+    //         if (response.ok) {
+    //             let textStatus = await response.json();
+    //             console.log(textStatus);
+    //             console.log(textStatus.result);
+    //             console.log(textStatus.time_exec);
+    //             console.log(textStatus.date);
 
 
-                updateDotStatus(textStatus.result);
-                addRowToTable(xValue, yValue, rValue, textStatus);
-            }
-            else {
-                throw new Error;
-            }
-        }
-        catch {
-            console.log("ERROR!")
-            sendStatusBlock.innerText = 'что-то пошло не по плану';
-        }
+    //             updateDotStatus(textStatus.result);
+    //             addRowToTable(xValue, yValue, rValue, textStatus);
+    //         }
+    //         else {
+    //             throw new Error;
+    //         }
+    //     }
+    //     catch {
+    //         console.log("ERROR!")
+    //         sendStatusBlock.innerText = 'что-то пошло не по плану';
+    //     }
+    // }
+    try {
+        let textStatus = await doRequest();
+
     }
+    catch (error) {
 
-    doRequest();
+    }
 };
 
 
 
-function validateInputs(xValue, yValue, rValue){
+function validateInputs(xValue, yValue, rValue) {
     let isValid = true;
     let errorMessage = '';
 
@@ -85,42 +90,42 @@ function validateInputs(xValue, yValue, rValue){
         errorMessage += 'Значение R должно быть числом в диапазоне от 2 до 5.\n';
     }
 
-    return {isValid, errorMessage};
+    return { isValid, errorMessage };
 }
 
 
-function addRowToTable(xValue,yValue,rValue, textStatus){
+function addRowToTable(xValue, yValue, rValue, textStatus) {
     const newRow = document.createElement('tr');
-                const xCell = document.createElement('td');
-                xCell.textContent = xValue;
-                newRow.appendChild(xCell);
+    const xCell = document.createElement('td');
+    xCell.textContent = xValue;
+    newRow.appendChild(xCell);
 
-                const yCell = document.createElement('td');
-                yCell.textContent = yValue;
-                newRow.appendChild(yCell);
+    const yCell = document.createElement('td');
+    yCell.textContent = yValue;
+    newRow.appendChild(yCell);
 
-                const rCell = document.createElement('td');
-                rCell.textContent = rValue;
-                newRow.appendChild(rCell);
+    const rCell = document.createElement('td');
+    rCell.textContent = rValue;
+    newRow.appendChild(rCell);
 
-                const timeCell = document.createElement('td');
-                timeCell.textContent = textStatus.time_exec;
-                newRow.appendChild(timeCell);
+    const timeCell = document.createElement('td');
+    timeCell.textContent = textStatus.time_exec;
+    newRow.appendChild(timeCell);
 
-                const dateCell = document.createElement('td');
-                dateCell.textContent = textStatus.date;
-                newRow.appendChild(dateCell);
+    const dateCell = document.createElement('td');
+    dateCell.textContent = textStatus.date;
+    newRow.appendChild(dateCell);
 
-                const resultCell = document.createElement('td');
-                resultCell.textContent = textStatus.result;
-                newRow.appendChild(resultCell);
+    const resultCell = document.createElement('td');
+    resultCell.textContent = textStatus.result;
+    newRow.appendChild(resultCell);
 
 
-                tableStatusTable.appendChild(newRow);
+    tableStatusTable.appendChild(newRow);
 }
 
 
-function updateDotStatus(result){
+function updateDotStatus(result) {
     if (result == "true") {
         //console.log("есть пробитие!");
         dotStatus[0].innerHTML = '<img src="./gifs/neo.gif">';
@@ -129,4 +134,32 @@ function updateDotStatus(result){
         //console.log("промах");
         dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
     }
+}
+
+function async newDoRequest(xValue, yValue, rValue){
+
+    const coords = new URLSearchParams({
+        x: xValue,
+        y: yValue,
+        r: rValue,
+    });
+    const url = `/fastcgi?${coords.toString()}`;
+    let response = await fetch(url);
+
+    if (response.ok) {
+        let textStatus = await response.json();
+        // console.log(textStatus);
+        // console.log(textStatus.result);
+        // console.log(textStatus.time_exec);
+        // console.log(textStatus.date);
+
+
+        // updateDotStatus(textStatus.result);
+        // addRowToTable(xValue, yValue, rValue, textStatus);
+    }
+    else {
+        throw new Error("произошла ошибка при \n взаимодействии с сервером");
+    }
+
+    return textStatus;
 }
