@@ -1,6 +1,6 @@
 package controller;
 
-import Exceptions.ParseException;
+
 import com.fastcgi.FCGIInterface;
 import model.Model;
 import share.Coordinates;
