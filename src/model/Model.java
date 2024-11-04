@@ -27,7 +27,7 @@ public class Model {
 
             long time = ChronoUnit.NANOS.between(start,end);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
-            content = JSON.genStandardJSON(String.valueOf(AreaCheck.hit(x, y, r)), String.valueOf(time), LocalDateTime.now().format(dtf));
+            content = JSON.genStandardJSON(content, String.valueOf(time), LocalDateTime.now().format(dtf));
         }
         catch (Exception e){
             String error = e.getMessage();
