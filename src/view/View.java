@@ -8,7 +8,7 @@ public class View {
     public static void send(String content){
 
         var httpResponse = """
-                    HTTP/1.1 200 OK
+                    Status: 200 OK
                     Content-Type: application/json
                     Content-Length: %d
                     
