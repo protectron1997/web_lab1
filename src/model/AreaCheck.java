@@ -11,7 +11,7 @@ public class AreaCheck {
 
     public static boolean circle(double x, int y, double r){
         double length = Math.sqrt(x*x + y*y);
-        return ((x>=0) && (y<=0) && (length <= ((double) r /2)));
+        return ((x>=0) && (y<=0) && (length <= (r /2)));
     }
 
     public static boolean triangle (double x, int y, double r){
