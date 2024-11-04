@@ -55,34 +55,35 @@ sendButton.onclick = function () {
                     dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
                 }
 
+                addRowToTable(xValue, yValue, rValue, textStatus);
 
-                const newRow = document.createElement('tr');
-                const xCell = document.createElement('td');
-                xCell.textContent = xValue;
-                newRow.appendChild(xCell);
+                // const newRow = document.createElement('tr');
+                // const xCell = document.createElement('td');
+                // xCell.textContent = xValue;
+                // newRow.appendChild(xCell);
 
-                const yCell = document.createElement('td');
-                yCell.textContent = yValue;
-                newRow.appendChild(yCell);
+                // const yCell = document.createElement('td');
+                // yCell.textContent = yValue;
+                // newRow.appendChild(yCell);
 
-                const rCell = document.createElement('td');
-                rCell.textContent = rValue;
-                newRow.appendChild(rCell);
+                // const rCell = document.createElement('td');
+                // rCell.textContent = rValue;
+                // newRow.appendChild(rCell);
 
-                const timeCell = document.createElement('td');
-                timeCell.textContent = textStatus.time_exec;
-                newRow.appendChild(timeCell);
+                // const timeCell = document.createElement('td');
+                // timeCell.textContent = textStatus.time_exec;
+                // newRow.appendChild(timeCell);
 
-                const dateCell = document.createElement('td');
-                dateCell.textContent = textStatus.date;
-                newRow.appendChild(dateCell);
+                // const dateCell = document.createElement('td');
+                // dateCell.textContent = textStatus.date;
+                // newRow.appendChild(dateCell);
 
-                const resultCell = document.createElement('td');
-                resultCell.textContent = textStatus.result;
-                newRow.appendChild(resultCell);
+                // const resultCell = document.createElement('td');
+                // resultCell.textContent = textStatus.result;
+                // newRow.appendChild(resultCell);
 
 
-                tableStatusTable.appendChild(newRow);
+                // tableStatusTable.appendChild(newRow);
 
             }
             else {
@@ -124,4 +125,35 @@ function validateInputs(xValue, yValue, rValue){
     }
 
     return {isValid, errorMessage};
+}
+
+
+function addRowToTable(xValue,yValue,rValue, textStatus){
+    const newRow = document.createElement('tr');
+                const xCell = document.createElement('td');
+                xCell.textContent = xValue;
+                newRow.appendChild(xCell);
+
+                const yCell = document.createElement('td');
+                yCell.textContent = yValue;
+                newRow.appendChild(yCell);
+
+                const rCell = document.createElement('td');
+                rCell.textContent = rValue;
+                newRow.appendChild(rCell);
+
+                const timeCell = document.createElement('td');
+                timeCell.textContent = textStatus.time_exec;
+                newRow.appendChild(timeCell);
+
+                const dateCell = document.createElement('td');
+                dateCell.textContent = textStatus.date;
+                newRow.appendChild(dateCell);
+
+                const resultCell = document.createElement('td');
+                resultCell.textContent = textStatus.result;
+                newRow.appendChild(resultCell);
+
+
+                tableStatusTable.appendChild(newRow);
 }
