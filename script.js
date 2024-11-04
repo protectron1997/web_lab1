@@ -118,12 +118,9 @@ async function newDoRequest(xValue, yValue, rValue){
     const url = `/fastcgi?${coords.toString()}`;
     let response = await fetch(url);
 
-    if (response.ok) {
-        let textStatus = await response.json();
-    }
-    else {
+    if (!response.ok) {
         throw new Error("произошла ошибка при \n взаимодействии с сервером");
     }
 
-    return textStatus;
+    return await response.json();
 }
