@@ -45,15 +45,6 @@ sendButton.onclick = function () {
 
 
                 updateDotStatus(textStatus.result);
-                // if (textStatus.result == "true") {
-                //     console.log("есть пробитие!");
-                //     dotStatus[0].innerHTML = '<img src="./gifs/neo.gif">';
-                // }
-                // else {
-                //     console.log("промах");
-                //     dotStatus[0].innerHTML = '<img src="./gifs/smith.webp">';
-                // }
-
                 addRowToTable(xValue, yValue, rValue, textStatus);
             }
             else {
