@@ -26,36 +26,6 @@ sendButton.onclick = async function () {
         sendStatusBlock.innerText = '';
     }
 
-    // async function doRequest() {
-    //     try {
-    //         const coords = new URLSearchParams({
-    //             x: xValue,
-    //             y: yValue,
-    //             r: rValue,
-    //         });
-    //         const url = `/fastcgi?${coords.toString()}`;
-    //         let response = await fetch(url);
-
-    //         if (response.ok) {
-    //             let textStatus = await response.json();
-    //             console.log(textStatus);
-    //             console.log(textStatus.result);
-    //             console.log(textStatus.time_exec);
-    //             console.log(textStatus.date);
-
-
-    //             updateDotStatus(textStatus.result);
-    //             addRowToTable(xValue, yValue, rValue, textStatus);
-    //         }
-    //         else {
-    //             throw new Error;
-    //         }
-    //     }
-    //     catch {
-    //         console.log("ERROR!")
-    //         sendStatusBlock.innerText = 'что-то пошло не по плану';
-    //     }
-    // }
     try {
         let textStatus = await newDoRequest(xValue, yValue, rValue);
         updateDotStatus(textStatus.result);
@@ -150,14 +120,6 @@ async function newDoRequest(xValue, yValue, rValue){
 
     if (response.ok) {
         let textStatus = await response.json();
-        // console.log(textStatus);
-        // console.log(textStatus.result);
-        // console.log(textStatus.time_exec);
-        // console.log(textStatus.date);
-
-
-        // updateDotStatus(textStatus.result);
-        // addRowToTable(xValue, yValue, rValue, textStatus);
     }
     else {
         throw new Error("произошла ошибка при \n взаимодействии с сервером");
