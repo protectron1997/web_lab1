@@ -1,23 +1,28 @@
 package controller;
 
 import Exceptions.ParseException;
+import Exceptions.ValidateException;
 import share.Coordinates;
+import share.ValidateR;
+import share.ValidateX;
+import share.ValidateY;
 
 import java.util.Objects;
 
 
 
+public class Parser {
+    private final ValidateX validateX = new ValidateX();
+    private final ValidateY validateY = new ValidateY();
+    private final ValidateR validateR = new ValidateR();
+    
 
-public class Parser{
-    private double x,r;
-    private int y;
 
 
-
-    public Coordinates extractValues(String data) throws ParseException {
-        boolean badParseFlag = false;
+    public Coordinates parse(String data) throws ParseException {
+        Coordinates result = new Coordinates();
+        int counter = 0; //будет считать кол-во обработанных значений
         StringBuilder badParseInfo = new StringBuilder();
-        Coordinates coordinates = new Coordinates();
 
         for(String chunk : data.split("&")) {
 
@@ -25,62 +30,62 @@ public class Parser{
 
             if (Objects.equals(keyValue[0], "x")) {
                 try {
-                    x = Double.parseDouble(keyValue[1]);
+                    double x = Double.parseDouble(keyValue[1]);
+                    if(validateX.check(x)){
+                        result.setX(x);
+                        counter++;
+                    }
                 }
                 catch (NumberFormatException e){
                     badParseInfo.append("x isn't double ");
                 }
-                if (x >= -5 && x <= 3) {
-                    this.x = x;
-                } else {
-                    badParseFlag = true;
-                    badParseInfo.append("false x ");
+                catch (ValidateException e){
+                    badParseInfo.append(e.getMessage());
                 }
+
             }
 
             if (Objects.equals(keyValue[0], "y")) {
                 try {
-                    y = Integer.parseInt(keyValue[1]);
-                }
-                catch (NumberFormatException e){
+                    int y = Integer.parseInt(keyValue[1]);
+                    if (validateY.check(y)) {
+                        result.setY(y);
+                        counter++;
+                    }
+                } catch (NumberFormatException e) {
                     badParseInfo.append("y isn't int ");
-                }
-
-                if (y >= -4 && y <= 4) {
-                    this.y = y;
-                } else {
-                    badParseFlag = true;
-                    badParseInfo.append("false y ");
+                } catch (ValidateException e) {
+                    badParseInfo.append(e.getMessage());
                 }
             }
 
             if (Objects.equals(keyValue[0], "r")) {
                 try {
-                    r = Double.parseDouble(keyValue[1]);
+                    double r = Double.parseDouble(keyValue[1]);
+                    if(validateR.check(r)){
+                        result.setR(r);
+                        counter++;
+                    }
                 }
                 catch (NumberFormatException e){
                     badParseInfo.append("r isn't double ");
                 }
-                if (r >= 2 && r <= 5) {
-                    this.r = r;
-                } else {
-                    badParseFlag = true;
-                    badParseInfo.append("false r ");
+                catch (ValidateException e){
+                    badParseInfo.append(e.getMessage());
                 }
             }
 
 
         }
 
-        if (badParseFlag){
+        if(!(badParseInfo.toString().equals(""))){
             throw new ParseException(badParseInfo.toString());
         }
 
-        coordinates.setX(this.x);
-        coordinates.setY(this.y);
-        coordinates.setR(this.r);
+        if((counter != 3) || (Double.isNaN(result.getX()) || (Double.isNaN(result.getR()) || (result.getY() == null) ))){
+            throw new ParseException("wrong number of arguments(xyr) or check that(xyr) exists ");
+        }
 
-
-        return coordinates;
+        return result;
     }
 }

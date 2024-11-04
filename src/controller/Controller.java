@@ -16,8 +16,7 @@ public class Controller {
 
     public void run(){
         Model mainModel = new Model();
-        Parser mainParser = new Parser();
-        NewParser newMainParser = new NewParser();
+        Parser MainParser = new Parser();
 
 
         while (fcgiInterface.FCGIaccept() >= 0) {
@@ -27,7 +26,7 @@ public class Controller {
             
             //777 если новых функций не будет - объедини catch
             try{
-                coordinates = newMainParser.parse(data);
+                coordinates = MainParser.parse(data);
                 content = mainModel.generate(coordinates);
                 View.send(content);
             }
@@ -37,17 +36,6 @@ public class Controller {
             catch (Exception e){
                 View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
             }
-
-
-
-
-
-
-
-
-            /*content = mainModel.generate(data);
-            view.View.send(content);*/
-
         }
     }
 
