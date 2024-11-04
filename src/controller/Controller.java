@@ -30,9 +30,6 @@ public class Controller {
                 contentToSend = mainModel.generate(coordinatesOfDot);
                 View.send(contentToSend);
             }
-            catch (ParseException e){
-                View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
-            }
             catch (Exception e){
                 View.errorSend(JSON.genStandardJSON("error", e.getMessage(), String.valueOf(0)));
             }
